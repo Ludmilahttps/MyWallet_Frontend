@@ -33,7 +33,7 @@ function LogIn() {
         }
 
         const database = JSON.parse(localStorage.getItem("data"))
-        axios.post(`${URL}/auth/login`, post)
+        axios.post(`${process.env.REACT_APP_API_URL}/sign-in`, post)
         .then(resp => { 
             //console.log(resp.data)
             setSidebar(false)
@@ -58,7 +58,7 @@ function LogIn() {
             <input data-test="email-input" type="email" name="email" placeholder="email" disabled={sentRequest} onChange={(e) => setEmail(e.currentTarget.value)}/>
             <input data-test="password-input" type="password" name="password" placeholder="password" disabled={sentRequest} onChange={(e) => setPassword(e.currentTarget.value)}/>
             <button data-test="login-btn" type='submit' disabled={sentRequest}  onClick={(e) => sendLogin(e)}>{sentRequest ? <ThreeDots height="18" width="30" color="white" ariaLabel="loading" wrapperStyle={{}} wrapperClassName=""/> : "LogIn" }</button>
-            <Link data-test="signup-link" to="/home">
+            <Link data-test="signup-link" to="/cadastro">
                 Don't have an account? Register
             </Link>
         </Form>
