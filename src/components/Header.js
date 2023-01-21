@@ -22,7 +22,6 @@ export const Head = styled.div
     height: 78px;
     position: fixed;
     top: 0; left: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     z-index: 1;
     display: flex;
     align-items: center;

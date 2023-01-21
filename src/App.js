@@ -25,9 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={< SignIn />} />
           <Route path="/cadastro" element={< SignUp />} />
-          <Route path="/home" element={< Home />} />
-          {/* <Route path="/novaentrada" element={< NewEnter />} />
-          <Route path="/novasaida" element={< NewOut />} /> */}
+          <Route path="/home" element={<  Home />} />
+          <Route path="/nova-entrada" element={< NewEnter />} />
+          <Route path="/nova-saida" element={< NewOut />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider >

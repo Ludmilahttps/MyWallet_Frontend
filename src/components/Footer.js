@@ -8,12 +8,12 @@ function Footer() {
 
     return (
         <Foot  data-test="menu">
-            <Link to="/habit">
+            <Link to="/nova-entrada">
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <p>New Entry</p>
             </Link>
-            <Link to="/historic">
-            <ion-icon name="remove-circle-outline"></ion-icon>
+            <Link to="/nova-saida">
+                <ion-icon name="remove-circle-outline"></ion-icon>
                 <p>New Exit</p>
             </Link>
         </Foot>

@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle
         line-height: 1;
         margin: 70px 0;
         background-color: #8C11BE;
+        display: flex;
+        flex-direction: column;
+        justify-context: center;
+        align-items: center;
     }
     ol, ul {
         list-style: none;
