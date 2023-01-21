@@ -4,8 +4,11 @@ import { useState } from 'react'
 import UserContext from '../src/UserContext'
 import GlobalStyle from './GlobalStyle'
 
-import SignIn from "./pages/signin/signin"
-import SignUp from "./pages/signup/signup"
+import SignIn from "./pages/SignIn/SignIn"
+import SignUp from "./pages/SignUp/SignUp"
+import Home from "./pages/Home/Home"
+import NewEnter from "./pages/NewEnter/NewEnter"
+import NewOut from "./pages/NewOut/NewOut"
 
 function App() {
 
@@ -22,6 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={< SignIn />} />
           <Route path="/cadastro" element={< SignUp />} />
+          <Route path="/home" element={< Home />} />
+          {/* <Route path="/novaentrada" element={< NewEnter />} />
+          <Route path="/novasaida" element={< NewOut />} /> */}
         </Routes>
       </BrowserRouter>
     </UserContext.Provider >
