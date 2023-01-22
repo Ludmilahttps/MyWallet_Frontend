@@ -34,11 +34,11 @@ function NewAccount() {
     return (
         <New>
             <img src="../../assets/MyWallet.svg"></img>
-            <input type="email" name="email" placeholder="email" disabled={sentRequest} onChange={(e) => setEmail(e.currentTarget.value)} />
-            <input type="name" name="name" placeholder="name" disabled={sentRequest} onChange={(e) => setName(e.currentTarget.value)} />
-            <input type="password" name="password" placeholder="password" disabled={sentRequest} onChange={(e) => setPassword(e.currentTarget.value)} />
-            <input type="password" name="password" placeholder="password confirm" disabled={sentRequest} onChange={(e) => setUserPasswordConf(e.currentTarget.value)} />
-            <button type='submit' disabled={sentRequest} onClick ={(e) => sendLogin(e)}>{sentRequest ? <ThreeDots height="18" width="30" color="white" ariaLabel="loading" wrapperStyle={{}} wrapperClassName=""/> : "Register" }</button>
+            <input data-test="email" type="email" name="email" placeholder="email" disabled={sentRequest} onChange={(e) => setEmail(e.currentTarget.value)} />
+            <input data-test="name" type="name" name="name" placeholder="name" disabled={sentRequest} onChange={(e) => setName(e.currentTarget.value)} />
+            <input data-test="password" type="password" name="password" placeholder="password" disabled={sentRequest} onChange={(e) => setPassword(e.currentTarget.value)} />
+            <input data-test="conf-password" type="password" name="password" placeholder="password confirm" disabled={sentRequest} onChange={(e) => setUserPasswordConf(e.currentTarget.value)} />
+            <button data-test="sign-up-submit" type='submit' disabled={sentRequest} onClick ={(e) => sendLogin(e)}>{sentRequest ? <ThreeDots height="18" width="30" color="white" ariaLabel="loading" wrapperStyle={{}} wrapperClassName=""/> : "Register" }</button>
             <Link to="/">
                 Already have an account? LogIn
             </Link>
