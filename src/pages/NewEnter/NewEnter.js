@@ -1,12 +1,11 @@
 import { useState, useContext } from "react"
 import { Container } from "./style"
 import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../UserContext.js"
-import dayjs from "dayjs"
 
 export default function NewEnter() {
-  const { info, historic, setInfo, setHistoric } = useContext(UserContext)
+  const { info } = useContext(UserContext)
   const goTo = useNavigate()
   const [value, setValue] = useState("")
   const [description, setDescription] = useState("")
@@ -19,6 +18,7 @@ export default function NewEnter() {
       description: description,
       type: "enter"
     }
+    
     const config = {
       headers: {
         Authorization: `Bearer ${info.token}`
@@ -43,9 +43,9 @@ export default function NewEnter() {
       <Container>
         <h1>New enter</h1>
         <form onSubmit={sendLogin}>
-          <input type="number" name="value" placeholder="value" value={value} onChange={(e) => setValue(e.target.value)} />
-          <input type="text" name="description" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-          <button type="submit">save</button>
+          <input data-test="registry-amount-input" type="number" name="value" placeholder="value" value={value} onChange={(e) => setValue(e.target.value)} />
+          <input data-test="registry-name-input" type="text" name="description" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <button data-test="registry-save" type="submit">save</button>
         </form>
       </Container>
     </>
