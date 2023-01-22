@@ -1,52 +1,45 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import { Form } from "./style"
-import { URL } from "../../constants/urls"
 import axios from "axios"
-import { useState} from "react"
-import { useContext } from "react"
+import { useState, useContext} from "react"
 import { ThreeDots } from 'react-loader-spinner'
-import UserContext from '../../UserContext.js';
+import { UserContext } from "../../UserContext.js"
  
 function LogIn() {
-    const { setInfo, setSidebar } = useContext(UserContext)
 
+    const { setInfo, setHistoric} = useContext(UserContext)
     const goTo =  useNavigate()
     const [userEmail, setEmail] = useState('')
-    const [userPassword, setPassword] = useState('')
     const [sentRequest, setSentRequest] = useState(false)
-    const [save, setSave] = useState(false)
+    const [userPassword, setPassword] = useState('')
 
-    if ((JSON.parse(localStorage.getItem("dados")) !== null)) {
-        if (save === false) {
-            setSave(true);
-        }
-    }
-
-    function sendLogin(e) {
+    async function sendLogin(e) {
         e.preventDefault()
+
         setSentRequest(true)
+        setInfo({})
+        setHistoric([])
 
         const post = {
             email: userEmail,
             password: userPassword
         }
 
-        const database = JSON.parse(localStorage.getItem("data"))
-        axios.post(`${process.env.REACT_APP_API_URL}/sign-in`, post)
-        .then(resp => { 
-            //console.log(resp.data)
-            setSidebar(false)
-            setInfo(resp.data)
-            localStorage.setItem("data", JSON.stringify(post))
-            goTo('/')
-        })
-        .catch(error => { 
-            alert(error)
-            localStorage.removeItem("data")
+        try {
+            const signIn = await axios.post(`${process.env.REACT_APP_API_URL}/sign-in`, post)
+            console.log(signIn.status)
+            
+            const token = signIn.data.token.replace("Bearer ", "")
+            const name = signIn.data.name
+
+            if (signIn.status === 200) { setInfo({ name, token })}
+            goTo('/home')
+
+        } catch (error) {
+            if (error.name === "AxiosError") alert("We couldn't find an account with this data!")
             setSentRequest(false)
-            setSave(false);
-        })
+        }
     }
 
     //     email: "ludvieira125@hotmail.com",

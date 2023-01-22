@@ -1,18 +1,16 @@
 import React from 'react'
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
-import UserContext from '../UserContext'
-import { useContext } from "react"
 
 function Footer() {
 
     return (
         <Foot  data-test="menu">
-            <Link to="/nova-entrada">
+            <Link data-test="new-income" to="/nova-entrada">
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <p>New Entry</p>
             </Link>
-            <Link to="/nova-saida">
+            <Link data-test="new-expense" to="/nova-saida">
                 <ion-icon name="remove-circle-outline"></ion-icon>
                 <p>New Exit</p>
             </Link>

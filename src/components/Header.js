@@ -1,15 +1,18 @@
 import React from 'react'
 import styled from "styled-components"
-import UserContext from '../UserContext'
-import { useContext } from "react"
-
+import { useNavigate } from "react-router-dom"
+import { useContext} from "react"
+import { UserContext } from "../UserContext.js"
 
 function Header() {
     const { info } = useContext(UserContext)
+    const GoTo= useNavigate()
+    console.log(info)
+
     return (
         <Head data-test="header">
-            <p>Hello, {info.name}</p>
-            <LogoImg src="../../assets/Vector.svg" />
+            <p data-test="user-name">Hello, {info.name}</p>
+            <LogoImg data-test="logout" src="../../assets/Vector.svg" onClick={() => GoTo("/")}/>
         </Head>
     )
 }
@@ -40,4 +43,5 @@ export const LogoImg = styled.img
     `
     width: 28px;
     height: 24px;
+    cursor: pointer;
 `

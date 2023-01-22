@@ -1,21 +1,27 @@
 import React from 'react'
-import { Link } from "react-router-dom"
-import { New} from "./style"
-import { URL } from "../../constants/urls"
+import { Link, useNavigate } from "react-router-dom"
+import { New } from "./style"
 import axios from "axios"
 import { ThreeDots } from 'react-loader-spinner'
 import { useState } from "react"
 
 function NewAccount() {
+
+    const goTo = useNavigate()
     const [userEmail, setEmail] = useState('')
-    const [userPassword, setPassword] = useState('')
     const [userName, setName] = useState('')
-    const [userPasswordConf, setUserPasswordConf] = useState("")
+    const [userPassword, setPassword] = useState('')
+    const [userConfirmPassword, setConfirmPassword] = useState('')
     const [sentRequest, setSentRequest] = useState(false)
 
-    function sendLogin(e) {
+    async function sendLogin(e) {
         e.preventDefault()
         setSentRequest(true)
+
+        if (userPassword !== userConfirmPassword) {
+            alert("The passwords must be the same!")
+            return setSentRequest(false)
+        }
 
         const post = {
             email: userEmail,
@@ -23,12 +29,16 @@ function NewAccount() {
             password: userPassword
         }
 
-        axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, post)
-            .then(res => { <Link to="/"></Link> })
-            .catch(error => { 
-                alert(error) 
-                setSentRequest(false)  
-            })
+        try {
+            console.log(process.env.REACT_APP_API_URL)
+            const aux = await axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, post)
+            setSentRequest(false)
+            if (aux.status !== 201) return
+            goTo("/")
+        } catch (error) {
+            alert(error)
+            setSentRequest(false)
+        }
     }
 
     return (
@@ -37,8 +47,8 @@ function NewAccount() {
             <input data-test="email" type="email" name="email" placeholder="email" disabled={sentRequest} onChange={(e) => setEmail(e.currentTarget.value)} />
             <input data-test="name" type="name" name="name" placeholder="name" disabled={sentRequest} onChange={(e) => setName(e.currentTarget.value)} />
             <input data-test="password" type="password" name="password" placeholder="password" disabled={sentRequest} onChange={(e) => setPassword(e.currentTarget.value)} />
-            <input data-test="conf-password" type="password" name="password" placeholder="password confirm" disabled={sentRequest} onChange={(e) => setUserPasswordConf(e.currentTarget.value)} />
-            <button data-test="sign-up-submit" type='submit' disabled={sentRequest} onClick ={(e) => sendLogin(e)}>{sentRequest ? <ThreeDots height="18" width="30" color="white" ariaLabel="loading" wrapperStyle={{}} wrapperClassName=""/> : "Register" }</button>
+            <input data-test="conf-password" type="password" name="password" placeholder="password confirm" disabled={sentRequest} onChange={(e) => setConfirmPassword(e.currentTarget.value)} />
+            <button data-test="sign-up-submit" type='submit' disabled={sentRequest} onClick={(e) => sendLogin(e)}>{sentRequest ? <ThreeDots height="18" width="30" color="white" ariaLabel="loading" wrapperStyle={{}} wrapperClassName="" /> : "Register"}</button>
             <Link to="/">
                 Already have an account? LogIn
             </Link>

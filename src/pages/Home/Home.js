@@ -2,9 +2,11 @@ import React from 'react'
 import { HistoricScreen } from './style'
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
-import { useContext, useEffect, useState } from 'react'
+import { UserContext } from "../../UserContext.js"
+import { useEffect, useState, useContext} from 'react'
 
 function Home(){
+    const { info, historic, setInfo, setHistoric} = useContext(UserContext)
     const [userName, setUserName] = useState("Stranger")
     const [userTransactions, setUserTransactions] = useState([])
 
@@ -18,7 +20,7 @@ function Home(){
 
     return(
         <HistoricScreen>
-            <Header />
+            <Header info={info}/>
             <section aux={userTransactions.length}>
                     {userTransactions.length ? (
                         <>
