@@ -43,14 +43,14 @@ function Home() {
                         {historic.map((transf) =>
                             <section>
                                 <h1>{transf.date}</h1>
-                                <h2>{transf.description}</h2>
-                                {transf.type === 'enter' ? <h3>{transf.value}</h3> : <h4>{transf.value}</h4>}
+                                <h2  data-test="registry-name" >{transf.description}</h2>
+                                {transf.type === 'enter' ? <h3 data-test="registry-amount">{transf.value}</h3> : <h4 data-test="registry-amount">{transf.value}</h4>}
                             </section>
                         )}
                     </Transfers>
                     <Balance>
                         <p>BALANCE</p>
-                        {sale < 0 ? <h3>{sale}</h3> : <h4>{sale}</h4>}
+                        {sale < 0 ? <h3 data-test="total-amount">{sale}</h3> : <h4 data-test="total-amount">{sale}</h4>}
 
                     </Balance>
                 </Feed>
