@@ -41,6 +41,9 @@ flex-direction: column;
     margin: 3px;
     cursor: pointer;
     justify-context: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 > a {
     width: 303px;

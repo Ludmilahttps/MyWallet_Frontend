@@ -42,6 +42,9 @@ export const New = styled.div
         cursor: pointer;
         align-items: center;
         justify-context: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     > a {
         width: 303px;
