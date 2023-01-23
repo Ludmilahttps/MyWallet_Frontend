@@ -4,12 +4,14 @@ export const HistoricScreen = styled.div
 `
     background-color: #FFF;
     display: flex;
+    position: fixed;
     flex-direction: column;
-    width: 446px;
-    height: 100%;
-    min-height: 580px;
-    padding: 28px 18px 0 18px;
-    margin-top: 8px;
+    width: 100%;
+    height: 80%;
+    left: 0;
+    padding: 0;
+    border-radius: 5px;
+    border: 25px solid #8C11BE;
     display: flex;
     align-items: center;
     justify-context: center;
@@ -17,17 +19,102 @@ export const HistoricScreen = styled.div
         font-family: 'Lexend Deca';
         font-size: 23px;
         color: #126BA5;
+        margin-top: 17px;
         margin-bottom: 17px;
     }
-    >section {
-        > p {
+`
+export const Feed= styled.div
+`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-context: center;
+    flex-direction: column;
+`
+
+export const Transfers= styled.div
+`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-context: center;
+    flex-direction: column;
+    padding: 15px;
+    > section{
+        width: 100%;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        > h1{
             font-family: 'Raleway';
-            font-style: normal;
             font-weight: 400;
-            font-size: 20px;
-            line-height: 23px;
-            text-align: center;
-            color: #868688;
+            font-size: 22px;
+            line-height: 22px;
+            color: #C6C6C6;
+            padding: 5px;
         }
+        > h2{
+            font-family: 'Raleway';
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 22px;
+            color: #000000;
+        }
+        > h3{
+            font-family: 'Raleway';
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 22px;
+            text-align: right;
+            color: #03AC00;
+        }
+        > h4{
+            font-family: 'Raleway';
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 22px;
+            text-align: right;
+            color: #C70000;
+        }
+    }
+`
+
+export const Balance= styled.div
+`
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 10px;
+    > p{
+        font-family: 'Raleway';
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 20px;
+        color: #000000;
+    }
+    > h3{
+        font-family: 'Raleway';
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        text-align: right;
+        color: #C70000;
+    }
+    > h4{
+        font-family: 'Raleway';
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        text-align: right;
+        color:#03AC00;
     }
 `
